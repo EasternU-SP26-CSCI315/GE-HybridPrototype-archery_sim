@@ -1,6 +1,4 @@
-https://github.com/EasternU-SP26-CSCI315/GE-HybridPrototype-archery_sim
-
-for this prototype majority of the week was spent on deciding what I was going to do for it since I did not want to do another platformer, so i decided to do a archery sim. The sprites were the first things that I created using
+For this prototype majority of the week was spent on deciding what I was going to do for it since I did not want to do another platformer, so i decided to do a archery sim. The sprites were the first things that I created using
 https://www.piskelapp.com/p/create/sprite/, and the first things I created when i started working in Godot for this prototype. by far the hardest portion of this code was the physics of the arrow, I was inspired by your first
 prototype that you showed us using equations to display lines so i made the path of the arrow be a parabola using the position of the mouse as its peak/ mid point. After that was done it was mostly smooth sailing with including the buttons,
 scoring methods, moving targets and sound, but the most tedious part of the project was getting the Area to work for the target.
