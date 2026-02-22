@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxtbrtjskcd8y"]
+
+[ext_resource type="Script" uid="uid://c3vi6xmfb2djs" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c4gxsjw1kt73d" path="res://Arrow.tscn" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://y33oxvghxth5" path="res://assets/Bow1.0.png" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://brb6rpi1hhbc5" path="res://assets/freesound_community-ding-101492.mp3" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://c1nfqfapr4n4d" path="res://Target.tscn" id="5_lquwl"]
+[ext_resource type="AudioStream" uid="uid://bni6ra14j0xc8" path="res://assets/dennish18-arrow-wood-impact-146418.mp3" id="6_7mycd"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_1bvp3")]
+position = Vector2(52, 602)
+scale = Vector2(0.62500006, 0.62500006)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(1054, 556)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1018.0
+offset_right = 1151.0
+offset_bottom = 249.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 116.0
+offset_bottom = 177.0
+
+[node name="lvl1" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Level: 1"
+
+[node name="lvl2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Level: 2"
+
+[node name="lvl3" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Level: 3"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 201.0
+offset_right = 71.0
+offset_bottom = 224.0
+text = "score:"
+
+[node name="score_label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 201.0
+offset_right = 121.0
+offset_bottom = 235.0
+
+[node name="reset" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -116.0
+offset_right = 8.0
+offset_bottom = 44.0
+text = "Reset"
+
+[node name="HS_display" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -566.0
+offset_top = 19.0
+offset_right = -481.0
+offset_bottom = 42.0
+text = "High_score:"
+
+[node name="High_score" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -461.0
+offset_top = 22.0
+offset_right = -315.0
+offset_bottom = 45.0
+
+[node name="Shots_display" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 233.0
+offset_right = 69.0
+offset_bottom = 256.0
+text = "shots:"
+
+[node name="shots" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 233.0
+offset_right = 123.0
+offset_bottom = 269.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(71, 575)
+rotation = 0.17976892
+scale = Vector2(2, 2)
+texture = ExtResource("3_h2yge")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7mycd")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7mycd")
+
+[connection signal="pressed" from="Control/VBoxContainer/lvl1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/lvl2" to="." method="_on_lvl_2_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/lvl3" to="." method="_on_lvl_3_pressed"]
+[connection signal="pressed" from="Control/reset" to="." method="_on_reset_pressed"]

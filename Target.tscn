@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1nfqfapr4n4d"]
+
+[ext_resource type="Texture2D" uid="uid://dhv45sisfshec" path="res://assets/Target.png" id="1_na354"]
+[ext_resource type="Script" uid="uid://83t11i0hshsn" path="res://area_2d.gd" id="2_6f2ye"]
+
+[sub_resource type="Gradient" id="Gradient_6f2ye"]
+offsets = PackedFloat32Array(0.33333334, 0.6666667)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0mptp"]
+gradient = SubResource("Gradient_6f2ye")
+fill_from = Vector2(0.325, 0.4875)
+fill_to = Vector2(0.125, 0.0625)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6f2ye"]
+a = Vector2(-29, 28)
+b = Vector2(-30, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f2ye"]
+size = Vector2(13.014837, 22.868366)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mptp"]
+size = Vector2(12.394473, 23.897455)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q42c6"]
+size = Vector2(12.79245, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2h1"]
+size = Vector2(13.021334, 24.555807)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seges"]
+size = Vector2(13.9062605, 30.14302)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_na354")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(19.500002, 70)
+scale = Vector2(1.0468749, 0.6562501)
+texture = SubResource("GradientTexture2D_0mptp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(58, -34)
+shape = SubResource("SegmentShape2D_6f2ye")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_6f2ye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(38.017433, -39.213165)
+rotation = 0.62831855
+shape = SubResource("RectangleShape2D_6f2ye")
+
+[node name="innerTop" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="innerTop"]
+position = Vector2(23.990383, -20.690632)
+rotation = 0.62831855
+shape = SubResource("RectangleShape2D_0mptp")
+
+[node name="bullseye" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullseye"]
+position = Vector2(11, -3.0000002)
+rotation = 0.62831855
+shape = SubResource("RectangleShape2D_q42c6")
+
+[node name="innerBottom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="innerBottom"]
+position = Vector2(-2.5159883, 14.893841)
+rotation = 0.62831855
+shape = SubResource("RectangleShape2D_xb2h1")
+
+[node name="outerbottom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="outerbottom"]
+position = Vector2(-18.51599, 36.893845)
+rotation = 0.62831855
+shape = SubResource("RectangleShape2D_seges")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="innerTop" to="Area2D" method="_on_inner_top_area_entered"]
+[connection signal="area_entered" from="bullseye" to="Area2D" method="_on_bullseye_area_entered"]
+[connection signal="area_entered" from="innerBottom" to="Area2D" method="_on_inner_bottom_area_entered"]
+[connection signal="area_entered" from="outerbottom" to="Area2D" method="_on_outerbottom_area_entered"]
